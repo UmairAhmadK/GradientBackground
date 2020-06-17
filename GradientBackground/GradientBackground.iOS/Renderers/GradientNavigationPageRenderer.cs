@@ -1,4 +1,5 @@
-﻿using CoreAnimation;
+﻿using System;
+using CoreAnimation;
 using CoreGraphics;
 using GradientBackground.Enums;
 using GradientBackground.iOS.Renderers;
@@ -66,7 +67,20 @@ namespace GradientBackground.iOS.Renderers
                     break;
             }
 
-            gradientLayer.Bounds = NavigationBar.Bounds;
+            // --> Get StatusBarFrame size:
+            var statusBarSize = UIApplication.SharedApplication.StatusBarFrame.Size;
+
+            // --> Set Height and Width of StatusBarFrame size:
+            var statusBar = Math.Min(statusBarSize.Height, statusBarSize.Width);
+
+            // --> Set NavigationBar Bounds:
+            var navigationBarBounds = new CGRect(
+                NavigationBar.Bounds.X,
+                NavigationBar.Bounds.Y,
+                NavigationBar.Bounds.Width,
+                statusBar + NavigationBar.Bounds.Height);
+
+            gradientLayer.Bounds = navigationBarBounds;
             gradientLayer.Colors = new CGColor[] { control.StartColor.ToCGColor(), control.EndColor.ToCGColor() };
             UIGraphics.BeginImageContext(gradientLayer.Bounds.Size);
             gradientLayer.RenderInContext(UIGraphics.GetCurrentContext());
