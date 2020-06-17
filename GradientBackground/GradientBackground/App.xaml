@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+                        xmlns:renderer="clr-namespace:GradientBackground.Renderers"
+                        x:Class="GradientBackground.App">
+	<Application.Resources>
+
+		<!-- Application resource dictionary -->
+        <Color x:Key="gradientStartColor">#5F499B</Color>
+        <Color x:Key="gradientEndColor">#005DA9</Color>
+
+        <!-- GradientNavigationPage Start and End Gradient Color -->
+        <Style TargetType="renderer:GradientNavigationPage">
+            <Setter Property="StartColor" Value="{StaticResource gradientStartColor}"/>
+            <Setter Property="EndColor" Value="{StaticResource gradientEndColor}"/>
+            <Setter Property="Direction" Value="ToRight"/>
+            <Setter Property="BarTextColor" Value="White"/>
+        </Style>
+
+	</Application.Resources>
+</prism:PrismApplication>
