@@ -1,7 +1,9 @@
 ﻿using Android.Content;
 using Android.Content.Res;
 using Android.Graphics.Drawables;
+using Android.Support.Design.Internal;
 using Android.Support.Design.Widget;
+using Android.Util;
 using GradientBackground.Droid.Renderers;
 using GradientBackground.Enums;
 using GradientBackground.Renderers;
@@ -63,12 +65,75 @@ namespace GradientBackground.Droid.Renderers
                     });
                 bottomNavigationView = relativeLayout.GetChildAt(1) as BottomNavigationView;
 
-                // --> Increase or decrease Tab bar icon size on BottomNavigationView:
-                //bottomNavigationView.ItemIconSize = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 32, Resources.DisplayMetrics);
+                // --> Individually resize Tab bar icons on BottomNavigationView:
+                //var bottomNavigationMenuView = (BottomNavigationMenuView)bottomNavigationView.GetChildAt(0);
+                //var scale = Resources.DisplayMetrics.Density;
+                //var paddingDp = 4;
+                //var dpAsPixels = (int)(paddingDp * scale + 0.5f);
+                //for (int i = 0; i < bottomNavigationMenuView.ChildCount; i++)
+                //{
+                //    var childView = bottomNavigationMenuView.GetChildAt(i);
+                //    var iconView = bottomNavigationMenuView.GetChildAt(i).FindViewById(Resource.Id.icon);
+                //    var layoutParams = iconView.LayoutParameters;
+                //    var displayMetrics = Resources.DisplayMetrics;
+                //    // --> If it is special menu item change the size, otherwise take other size:
+                //    if (i == 1)
+                //    {
+                //        // --> Set Padding individually:
+                //        //if (childView is BottomNavigationItemView tab)
+                //        //{
+                //        //    // --> Set Padding here:
+                //        //    tab.SetPadding(tab.PaddingLeft, dpAsPixels, tab.PaddingRight, tab.PaddingBottom);
+                //        //}
+
+                //        // --> Set height here:
+                //        layoutParams.Height = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 32, displayMetrics);
+
+                //        // --> Set width here:
+                //        layoutParams.Width = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 48, displayMetrics);
+                //    }
+                //    else if (i == 2)
+                //    {
+                //        // --> Set Padding individually:
+                //        //if (childView is BottomNavigationItemView tab)
+                //        //{
+                //        //    // --> Set Padding here:
+                //        //    tab.SetPadding(tab.PaddingLeft, dpAsPixels, tab.PaddingRight, tab.PaddingBottom);
+                //        //}
+
+                //        // --> Set height here:
+                //        layoutParams.Height = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 24, displayMetrics);
+
+                //        // --> Set width here:
+                //        layoutParams.Width = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 24, displayMetrics);
+                //    }
+                //    else
+                //    {
+                //        // --> Set Padding individually:
+                //        //if (childView is BottomNavigationItemView tab)
+                //        //{
+                //        //    // --> Set Padding here:
+                //        //    tab.SetPadding(tab.PaddingLeft, dpAsPixels, tab.PaddingRight, tab.PaddingBottom);
+                //        //}
+
+                //        // --> Set height here:
+                //        layoutParams.Height = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 28, displayMetrics);
+
+                //        // --> Set width here:
+                //        layoutParams.Width = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 28, displayMetrics);
+                //    }
+                //    iconView.LayoutParameters = layoutParams;
+                //}
+
+                // --> Resize all Tab bar icons equally on BottomNavigationView:
+                //bottomNavigationView.ItemIconSize = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 80, Resources.DisplayMetrics);
 
                 bottomNavigationView.ItemIconTintList = iconsColorStates;
                 bottomNavigationView.ItemTextColor = textColorStates;
+
+                // --> Set Padding for all icons equally:
                 bottomNavigationView.SetPadding(0, 15, 0, 0);
+
                 bottomNavigationView.SetBackground(gradientDrawable);
                 bottomNavigationView.Elevation = 0;
             }
