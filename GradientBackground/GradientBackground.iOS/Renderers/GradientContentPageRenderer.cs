@@ -40,24 +40,24 @@ namespace GradientBackground.iOS.Renderers
                     gradientLayer.EndPoint = new CGPoint(0, 0.5);
                     break;
                 case GradientDirection.ToTop:
-                    gradientLayer.StartPoint = new CGPoint(0.5, 0);
-                    gradientLayer.EndPoint = new CGPoint(0.5, 1);
-                    break;
-                case GradientDirection.ToBottom:
                     gradientLayer.StartPoint = new CGPoint(0.5, 1);
                     gradientLayer.EndPoint = new CGPoint(0.5, 0);
                     break;
+                case GradientDirection.ToBottom:
+                    gradientLayer.StartPoint = new CGPoint(0.5, 0);
+                    gradientLayer.EndPoint = new CGPoint(0.5, 1);
+                    break;
                 case GradientDirection.ToTopLeft:
-                    gradientLayer.StartPoint = new CGPoint(1, 0);
-                    gradientLayer.EndPoint = new CGPoint(0, 1);
+                    gradientLayer.StartPoint = new CGPoint(1, 1);
+                    gradientLayer.EndPoint = new CGPoint(0, 0);
                     break;
                 case GradientDirection.ToTopRight:
                     gradientLayer.StartPoint = new CGPoint(0, 1);
                     gradientLayer.EndPoint = new CGPoint(1, 0);
                     break;
                 case GradientDirection.ToBottomLeft:
-                    gradientLayer.StartPoint = new CGPoint(1, 1);
-                    gradientLayer.EndPoint = new CGPoint(0, 0);
+                    gradientLayer.StartPoint = new CGPoint(1, 0);
+                    gradientLayer.EndPoint = new CGPoint(0, 1);
                     break;
                 case GradientDirection.ToBottomRight:
                     gradientLayer.StartPoint = new CGPoint(0, 0);
